@@ -6,11 +6,16 @@ public class ScoreManager : MonoBehaviour {
 
     private static ScoreManager instance = null;
 
+	public int pointsToWin = 5;
+
     private Text textLeft;
     private Text textRight;
 
     private int scoreLeft;
     private int scoreRight;
+
+	private GameObject winTextLeft;
+	private GameObject winTextRight;
 
     public static ScoreManager GetInstance() {
         return instance;
@@ -24,22 +29,38 @@ public class ScoreManager : MonoBehaviour {
     }
 
     void Start() {
-        Text[] texts = FindObjectsOfType<Text>();
-        textLeft = texts[0];
-        textRight = texts[1];
+		textLeft = transform.FindChild("Score Left").GetComponent<Text>();
+		textRight = transform.FindChild("Score Right").GetComponent<Text>();
         scoreLeft = 0;
         scoreRight = 0;
+		winTextLeft = transform.Find("Game over text/Left won").gameObject;
+		winTextRight = transform.Find("Game over text/Right won").gameObject;
+		winTextLeft.SetActive(false);
+		winTextRight.SetActive(false);
         UpdateScores();
     }
 
-    public void AddPoint(PlayerSide side) {
+	/**
+	 * Returns true if game is over.
+	 */
+    public bool AddPoint(PlayerSide side) {
+		bool result = false;
+
         switch (side) {
             case PlayerSide.Left:
                 scoreRight++;
+			    if (scoreRight >= pointsToWin) {
+					winTextRight.SetActive(true);
+					result = true;
+				}
                 break;
 
             case PlayerSide.Right:
-                scoreLeft++;
+				scoreLeft++;
+				if (scoreLeft >= pointsToWin) {
+					winTextLeft.SetActive(true);
+					result = true;
+				}
                 break;
             default:
                 Debug.LogError("Side not specified!");
@@ -47,6 +68,7 @@ public class ScoreManager : MonoBehaviour {
         }
 
         UpdateScores();
+		return result;
     }
 
     private void UpdateScores() {

@@ -38,7 +38,12 @@ public class BallManager : MonoBehaviour {
     }
 
     public void AddPointAndSpawnNewBall(PlayerSide player) {
-        scoreManager.AddPoint(player);
-        ResetBall();
+        bool gameOver = scoreManager.AddPoint(player);
+
+		if (! gameOver) {
+			ResetBall();
+		} else {
+			ball.gameObject.SetActive(false);
+		}
     }
 }

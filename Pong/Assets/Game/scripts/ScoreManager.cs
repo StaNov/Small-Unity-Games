@@ -16,6 +16,7 @@ public class ScoreManager : MonoBehaviour {
 
 	private GameObject winTextLeft;
 	private GameObject winTextRight;
+	private GameObject buttons;
 
     public static ScoreManager GetInstance() {
         return instance;
@@ -31,12 +32,15 @@ public class ScoreManager : MonoBehaviour {
     void Start() {
 		textLeft = transform.FindChild("Score Left").GetComponent<Text>();
 		textRight = transform.FindChild("Score Right").GetComponent<Text>();
-        scoreLeft = 0;
-        scoreRight = 0;
 		winTextLeft = transform.Find("Game over text/Left won").gameObject;
 		winTextRight = transform.Find("Game over text/Right won").gameObject;
+		buttons = transform.Find("Buttons").gameObject;
+
+        scoreLeft = 0;
+        scoreRight = 0;
 		winTextLeft.SetActive(false);
 		winTextRight.SetActive(false);
+		buttons.SetActive(false);
         UpdateScores();
     }
 
@@ -68,6 +72,11 @@ public class ScoreManager : MonoBehaviour {
         }
 
         UpdateScores();
+
+		if (result) {
+			buttons.SetActive(true);
+		}
+
 		return result;
     }
 

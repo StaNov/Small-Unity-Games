@@ -12,7 +12,24 @@ public class PaddleControler : MonoBehaviour {
 
     void FixedUpdate() {
         // TODO předělat na fyziku
-        float inputAxis = Input.GetAxis(playerSide.ToString());
-        transform.Translate(Vector3.up * inputAxis * paddleSpeed * 0.01f);
-    }
+        float inputAxis = Input.GetAxisRaw(playerSide.ToString());
+
+		if (inputAxis > 0) {
+			MoveUp();
+		} else if (inputAxis < 0) {
+			MoveDown();
+		}
+	}
+	
+	public void MoveUp() {
+		Move(Vector3.up);
+	}
+	
+	public void MoveDown() {
+		Move(Vector3.down);
+	}
+	
+	private void Move(Vector3 direction) {
+		transform.Translate(direction * paddleSpeed * Time.deltaTime);
+	}
 }

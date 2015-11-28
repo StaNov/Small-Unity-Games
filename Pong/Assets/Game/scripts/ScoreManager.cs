@@ -14,8 +14,8 @@ public class ScoreManager : MonoBehaviour {
     private int scoreLeft;
     private int scoreRight;
 
-	private GameObject winTextLeft;
-	private GameObject winTextRight;
+	private Text winTextLeft;
+	private Text winTextRight;
 	private GameObject buttons;
 
     public static ScoreManager GetInstance() {
@@ -30,16 +30,16 @@ public class ScoreManager : MonoBehaviour {
     }
 
     void Start() {
-		textLeft = transform.FindChild("Score Left").GetComponent<Text>();
-		textRight = transform.FindChild("Score Right").GetComponent<Text>();
-		winTextLeft = transform.Find("Game over text/Left won").gameObject;
-		winTextRight = transform.Find("Game over text/Right won").gameObject;
+		textLeft = GameObject.Find("Score Left").GetComponent<Text>();
+		textRight = GameObject.Find("Score Right").GetComponent<Text>();
+		winTextLeft = transform.Find("Game over text/Left won").GetComponent<Text>();
+		winTextRight = transform.Find("Game over text/Right won").GetComponent<Text>();
 		buttons = transform.Find("Buttons").gameObject;
 
         scoreLeft = 0;
         scoreRight = 0;
-		winTextLeft.SetActive(false);
-		winTextRight.SetActive(false);
+		winTextLeft.enabled = false;
+		winTextRight.enabled = false;
 		buttons.SetActive(false);
         UpdateScores();
     }
@@ -54,7 +54,7 @@ public class ScoreManager : MonoBehaviour {
             case PlayerSide.Left:
                 scoreRight++;
 			    if (scoreRight >= pointsToWin) {
-					winTextRight.SetActive(true);
+					winTextRight.enabled = true;
 					result = true;
 				}
                 break;
@@ -62,7 +62,7 @@ public class ScoreManager : MonoBehaviour {
             case PlayerSide.Right:
 				scoreLeft++;
 				if (scoreLeft >= pointsToWin) {
-					winTextLeft.SetActive(true);
+					winTextLeft.enabled = true;
 					result = true;
 				}
                 break;

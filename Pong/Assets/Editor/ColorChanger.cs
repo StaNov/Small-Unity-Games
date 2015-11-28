@@ -8,6 +8,12 @@ public class ColorChanger : EditorWindow {
 	Color rightPlayerColor;
 
 
+	void Awake() {
+		leftPlayerColor = LoadMaterial("PaddleLeft").color;
+		rightPlayerColor = LoadMaterial("PaddleRight").color;
+	}
+
+
 	[MenuItem("Window/Color Changer")]
 	public static void ShowWindow() {
 		EditorWindow.GetWindow(typeof(ColorChanger));

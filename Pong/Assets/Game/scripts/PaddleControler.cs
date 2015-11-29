@@ -11,7 +11,6 @@ public class PaddleControler : MonoBehaviour {
     public float paddleSpeed = 5;
 
     void FixedUpdate() {
-        // TODO předělat na fyziku
         float inputAxis = Input.GetAxisRaw(playerSide.ToString());
 
 		if (inputAxis > 0) {

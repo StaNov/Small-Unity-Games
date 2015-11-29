@@ -77,6 +77,7 @@ public class ScoreManager : MonoBehaviour {
 
 		if (result) {
 			buttons.SetActive(true);
+			UnityEngine.Cursor.visible = true;
 		}
 
 		return result;

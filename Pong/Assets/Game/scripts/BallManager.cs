@@ -4,7 +4,8 @@ using System.Collections;
 public class BallManager : MonoBehaviour {
 
     private static float BALL_SPAWN_POSITION_X = 0;
-    private static float BALL_SPAWN_POSITION_Y = 0;
+
+	public float startingBallSpeed = 10f;
 
     private static BallManager instance = null;
 
@@ -26,22 +27,33 @@ public class BallManager : MonoBehaviour {
     void Start() {
         scoreManager = ScoreManager.GetInstance();
         ball = GameObject.FindGameObjectWithTag("Ball").transform;
-        ResetBall();
+        ResetBall(PlayerSide.Left);
     }
 
-    public void ResetBall() {
+    public void ResetBall(PlayerSide targetSide) {
         Rigidbody ballRigidBody = ball.GetComponent<Rigidbody>();
 
-        ball.position = new Vector3(BALL_SPAWN_POSITION_X, BALL_SPAWN_POSITION_Y, ball.position.z);
+        ball.position = new Vector3(BALL_SPAWN_POSITION_X, Random.Range(-10f, 10f), ball.position.z);
         ballRigidBody.velocity = Vector3.zero;
-        ballRigidBody.AddForce(new Vector3(10, 10, 0), ForceMode.Impulse);
+
+		Vector3 force = new Vector3(startingBallSpeed, startingBallSpeed, 0);
+
+		if (targetSide == PlayerSide.Left) {
+			force = new Vector3(-force.x, force.y, force.z);
+		}
+
+		if (Random.value > 0.5) {
+			force = new Vector3(force.x, -force.y, force.z);
+		}
+
+        ballRigidBody.AddForce(force, ForceMode.Impulse);
     }
 
     public void AddPointAndSpawnNewBall(PlayerSide player) {
         bool gameOver = scoreManager.AddPoint(player);
 
 		if (! gameOver) {
-			ResetBall();
+			ResetBall(player == PlayerSide.Left ? PlayerSide.Right : PlayerSide.Left);
 		} else {
 			ball.gameObject.SetActive(false);
 		}

@@ -355,6 +355,7 @@ GameObject:
   - 114: {fileID: 11422288}
   - 114: {fileID: 11462146}
   - 114: {fileID: 11468206}
+  - 114: {fileID: 11443326}
   m_Layer: 0
   m_Name: scripts
   m_TagString: Untagged
@@ -1000,6 +1001,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSide: 0
+--- !u!114 &11443326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b317e92f2b859d4781fce65b840ab0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11443956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1155,6 +1167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pointsToWin: 5
+  levelNumber: 0
 --- !u!114 &11477566
 MonoBehaviour:
   m_ObjectHideFlags: 1

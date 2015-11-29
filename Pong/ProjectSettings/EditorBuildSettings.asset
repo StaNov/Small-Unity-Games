@@ -8,4 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Menu/menu.unity
   - enabled: 1
-    path: Assets/Game/scenes/scene.unity
+    path: Assets/Game/scenes/easyMatch.unity

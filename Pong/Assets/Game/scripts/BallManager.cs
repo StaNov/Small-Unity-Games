@@ -27,33 +27,37 @@ public class BallManager : MonoBehaviour {
     void Start() {
         scoreManager = ScoreManager.GetInstance();
         ball = GameObject.FindGameObjectWithTag("Ball").transform;
-        ResetBall(PlayerSide.Left);
+        ResetBall();
     }
 
-    public void ResetBall(PlayerSide targetSide) {
+    public void ResetBall() {
         Rigidbody ballRigidBody = ball.GetComponent<Rigidbody>();
 
         ball.position = new Vector3(BALL_SPAWN_POSITION_X, Random.Range(-10f, 10f), ball.position.z);
         ballRigidBody.velocity = Vector3.zero;
+    }
 
+	public void KickBall(PlayerSide targetSide) {
+		Rigidbody ballRigidBody = ball.GetComponent<Rigidbody>();
 		Vector3 force = new Vector3(startingBallSpeed, startingBallSpeed, 0);
-
+		
 		if (targetSide == PlayerSide.Left) {
 			force = new Vector3(-force.x, force.y, force.z);
 		}
-
+		
 		if (Random.value > 0.5) {
 			force = new Vector3(force.x, -force.y, force.z);
 		}
-
-        ballRigidBody.AddForce(force, ForceMode.Impulse);
-    }
+		
+		ballRigidBody.AddForce(force, ForceMode.Impulse);
+	}
 
     public void AddPointAndSpawnNewBall(PlayerSide player) {
         bool gameOver = scoreManager.AddPoint(player);
 
 		if (! gameOver) {
-			ResetBall(player == PlayerSide.Left ? PlayerSide.Right : PlayerSide.Left);
+			ResetBall();
+			KickBall(player == PlayerSide.Left ? PlayerSide.Right : PlayerSide.Left);
 		} else {
 			ball.gameObject.SetActive(false);
 		}

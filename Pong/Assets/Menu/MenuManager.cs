@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameStarter : MonoBehaviour {
+public class MenuManager : MonoBehaviour {
 
 	public void StartEasyMatch() {
 		Application.LoadLevel(Application.loadedLevel + 1);
@@ -17,5 +17,9 @@ public class GameStarter : MonoBehaviour {
 	
 	public void StartPlayerVsPlayer() {
 		Application.LoadLevel(Application.loadedLevel + 1);
+	}
+
+	public void Exit() {
+		Application.Quit();
 	}
 }

@@ -5,7 +5,7 @@ public class GameExiter : MonoBehaviour {
     
 	void Update () {
 	    if (Input.GetAxis("Exit") > 0) {
-            Application.Quit();
+            Application.LoadLevel(0);
         }
 	}
 }

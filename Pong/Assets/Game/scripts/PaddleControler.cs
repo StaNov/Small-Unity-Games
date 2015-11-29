@@ -9,8 +9,13 @@ public class PaddleControler : MonoBehaviour {
 
     public PlayerSide playerSide = PlayerSide.Unassigned;
     public float paddleSpeed = 5;
+	public bool enablePlayerControl = true;
 
     void FixedUpdate() {
+		if (!enablePlayerControl) {
+			return;
+		}
+
         float inputAxis = Input.GetAxisRaw(playerSide.ToString());
 
 		if (inputAxis > 0) {

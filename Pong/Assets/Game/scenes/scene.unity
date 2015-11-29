@@ -426,6 +426,10 @@ Prefab:
       propertyPath: playerSide
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11419214, guid: ba815c4dcc83a654fa731a94dd12b5c2, type: 2}
+      propertyPath: paddleSpeed
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ba815c4dcc83a654fa731a94dd12b5c2, type: 2}
   m_IsPrefabParent: 0
@@ -705,7 +709,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1959455667}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 942e5938e04c1614a97701c489ed347a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c971cb843bc7fc4d8d486ddde680520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2092394738

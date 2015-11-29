@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour {
     private static ScoreManager instance = null;
 
 	public int pointsToWin = 5;
+	public int levelNumber = 0;
 
     private Text textLeft;
     private Text textRight;
@@ -56,6 +57,7 @@ public class ScoreManager : MonoBehaviour {
 			    if (scoreRight >= pointsToWin) {
 					winTextRight.enabled = true;
 					result = true;
+					MaximumLevelManager.SaveMaxLevel(levelNumber);
 				}
                 break;
 

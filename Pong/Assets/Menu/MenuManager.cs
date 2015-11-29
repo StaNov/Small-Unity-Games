@@ -4,18 +4,26 @@ using System.Collections;
 public class MenuManager : MonoBehaviour {
 
 	public void StartEasyMatch() {
-		Application.LoadLevel(Application.loadedLevel + 1);
+		MenuSettings.Instance().difficulty = Difficulty.EASY;
+		LoadGame();
 	}
 
 	public void StartMediumMatch() {
-		Application.LoadLevel(Application.loadedLevel + 1);
+		MenuSettings.Instance().difficulty = Difficulty.MEDIUM;
+		LoadGame();
 	}
 	
 	public void StartHardMatch() {
-		Application.LoadLevel(Application.loadedLevel + 1);
+		MenuSettings.Instance().difficulty = Difficulty.HARD;
+		LoadGame();
 	}
 	
 	public void StartPlayerVsPlayer() {
+		MenuSettings.Instance().difficulty = Difficulty.PVP;
+		LoadGame();
+	}
+
+	private void LoadGame() {
 		Application.LoadLevel(Application.loadedLevel + 1);
 	}
 

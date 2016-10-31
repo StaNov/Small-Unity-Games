@@ -3,12 +3,12 @@ using System.Collections;
 using System;
 
 public class GameManager : MonoBehaviour {
-	
+
 	void Start () {
-		
+		DealCards();
 	}
-	
-	void Update () {
-	
+
+	private void DealCards() {
+		Players.Playerz[0].DealCards();
 	}
 }

@@ -4,22 +4,17 @@ using System;
 using System.Collections.Generic;
 
 public class CardsDeck : MonoBehaviour {
-
-	private List<Card> m_Cards;
+	
 	private static CardsDeck m_Instance;
 
-	public static List<Card> CardsInDeck { get { return GetCards(); } }
+	public static Card[] CardsInDeck { get { return GetCards(); } }
 
-	private static List<Card> GetCards() {
-		var result = new List<Card>(m_Instance.m_Cards);
-		m_Instance.m_Cards.Clear();
-
-		return result;
+	private static Card[] GetCards() {
+		return m_Instance.transform.GetComponentsInChildren<Card>();
 	}
 	
 	void Awake () {
 		m_Instance = this;
-		m_Cards = new List<Card>(32);
 
 		CreateCards();
 		ShuffleCards();
@@ -34,24 +29,19 @@ public class CardsDeck : MonoBehaviour {
 				newCard.Value = value;
 				newCardObject.name = newCard.ToString();
 				newCardObject.transform.parent = this.transform;
-				m_Cards.Add(newCard);
 			}
 		}
 	}
 
 	private void ShuffleCards() {
-		List<Card> shuffled = new List<Card>(32);
+		List<Card> remainings = new List<Card>(CardsInDeck);
 
 		var random = new System.Random();
 
-		while (m_Cards.Count > 0) {
-			int index = random.Next(0, m_Cards.Count);
-			shuffled.Add(m_Cards[index]);
-			m_Cards.RemoveAt(index);
-		}
-
-		for (int i = 0; i < shuffled.Count; i++) {
-			m_Cards.Add(shuffled[i]);
+		while (remainings.Count > 0) {
+			int index = random.Next(0, remainings.Count);
+			remainings[index].transform.SetAsFirstSibling();
+			remainings.RemoveAt(index);
 		}
 	}
 }

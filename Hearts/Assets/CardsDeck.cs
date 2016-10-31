@@ -6,8 +6,19 @@ using System.Collections.Generic;
 public class CardsDeck : MonoBehaviour {
 
 	private List<Card> m_Cards;
+	private static CardsDeck m_Instance;
+
+	public static List<Card> CardsInDeck { get { return GetCards(); } }
+
+	private static List<Card> GetCards() {
+		var result = new List<Card>(m_Instance.m_Cards);
+		m_Instance.m_Cards.Clear();
+
+		return result;
+	}
 	
-	void Start () {
+	void Awake () {
+		m_Instance = this;
 		m_Cards = new List<Card>(32);
 
 		CreateCards();

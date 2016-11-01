@@ -5,6 +5,7 @@ public class Card : MonoBehaviour {
 
 	public CardType Type { get { return m_Type; } set { SetType(value); } }
 	public CardValue Value { get { return m_Value; } set { SetValue(value); } }
+	public bool IsFirstCard { get { return m_Type == CardType.Diamonds && m_Value == CardValue.Queen; } }
 
 	private CardType m_Type;
 	private CardValue m_Value;

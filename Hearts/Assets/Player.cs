@@ -3,10 +3,23 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public Hand Hand { get { return m_Hand; } }
-
 	[SerializeField]
 	private Hand m_Hand;
+
+	public int PlayerIndex { get; private set; }
+
+	void Awake() {
+		PlayerIndex = transform.GetSiblingIndex();
+	}
+
+	void Update() {
+		switch (GameBoard.State) {
+			// TODO move to AI
+			case GameBoard.GameBoardState.WaitingForFirstCard:
+				PlayFirstCardIfPossible();
+				break;
+		}
+	}
 
 	public void DealCards() {
 		Card[] cardsToDeal = CardsDeck.CardsInDeck;
@@ -16,14 +29,24 @@ public class Player : MonoBehaviour {
 			return;
 		}
 
-		int currentPlayerIndex = MyIndex;
+		int currentPlayerIndex = PlayerIndex;
 
 		foreach (Card card in cardsToDeal) {
 			currentPlayerIndex = (currentPlayerIndex + 1) % Players.Playerz.Length;
 
-			Players.Playerz[currentPlayerIndex].Hand.AcceptCard(card);
+			Players.Playerz[currentPlayerIndex].AcceptCardFromDealer(card);
 		}
 	}
 
-	private int MyIndex { get { return transform.GetSiblingIndex(); } }
+	public void AcceptCardFromDealer(Card card) {
+		m_Hand.Add(card);
+	}
+
+	private void PlayFirstCardIfPossible() {
+		Card diamondQueen = m_Hand.GetDiamondQueenIfInHand();
+
+		if (diamondQueen != null) {
+			GameBoard.AcceptPlayedCard(diamondQueen, PlayerIndex);
+		}
+	}
 }

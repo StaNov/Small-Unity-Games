@@ -7,11 +7,11 @@ public class Players : MonoBehaviour {
 
 
 	private static Players m_Instance;
-
-	[SerializeField]
+	
 	private Player[] m_Players;
 
 	void Awake() {
 		m_Instance = this;
+		m_Players = GetComponentsInChildren<Player>();
 	}
 }

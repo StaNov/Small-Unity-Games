@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 0c76eabf43eac3f478674808f38561c0
-timeCreated: 1478116531
+timeCreated: 1478117097
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -277,8 +277,8 @@ TextureImporter:
       name: DiamondsV10
       rect:
         serializedVersion: 2
-        x: 650
-        y: 298
+        x: 648
+        y: 300
         width: 72
         height: 100
       alignment: 0

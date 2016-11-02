@@ -11,6 +11,8 @@ public class Card : MonoBehaviour {
 	private CardValue m_Value;
 	private bool m_TypeSet = false;
 	private bool m_ValueSet = false;
+	private Sprite m_CardFront; // TODO set sprite
+	private Sprite m_CardBack; // TODO set sprite
 
 	public override string ToString() {
 		if (!m_TypeSet || !m_ValueSet) {
@@ -47,6 +49,7 @@ public class Card : MonoBehaviour {
 
 		m_Type = type;
 		m_TypeSet = true;
+		SetCardSpritesIfCardFullyPrepared();
 	}
 
 	private void SetValue(CardValue value) {
@@ -57,5 +60,17 @@ public class Card : MonoBehaviour {
 
 		m_Value = value;
 		m_ValueSet = true;
+		SetCardSpritesIfCardFullyPrepared();
+	}
+
+	private void SetCardSpritesIfCardFullyPrepared() {
+		if (!m_TypeSet || !m_ValueSet) {
+			// card is not fully prepared yet
+			return;
+		}
+
+		m_CardFront = CardGraphicsProvider.GetCardSprite(this);
+		m_CardBack = CardGraphicsProvider.GetCardBackSprite();
+
 	}
 }

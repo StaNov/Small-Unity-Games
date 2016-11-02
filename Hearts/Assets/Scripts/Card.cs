@@ -5,12 +5,14 @@ public class Card : MonoBehaviour {
 
 	public CardType Type { get { return m_Type; } set { SetType(value); } }
 	public CardValue Value { get { return m_Value; } set { SetValue(value); } }
+	public bool Shown { get { return m_Shown; } set { SetShown(value); } }
 	public bool IsFirstCard { get { return m_Type == CardType.Diamonds && m_Value == CardValue.Queen; } }
 
 	private CardType m_Type;
 	private CardValue m_Value;
 	private bool m_TypeSet = false;
 	private bool m_ValueSet = false;
+	private bool m_Shown = false;
 	private Sprite m_CardFront; // TODO set sprite
 	private Sprite m_CardBack; // TODO set sprite
 
@@ -69,8 +71,17 @@ public class Card : MonoBehaviour {
 			return;
 		}
 
+		// TODO separate component?
 		m_CardFront = CardGraphicsProvider.GetCardSprite(this);
 		m_CardBack = CardGraphicsProvider.GetCardBackSprite();
+	}
 
+	private void SetShown(bool shown) {
+		if (shown == m_Shown) {
+			return;
+		}
+
+		GetComponent<SpriteRenderer>().sprite = shown ? m_CardFront : m_CardBack;
+		m_Shown = shown;
 	}
 }

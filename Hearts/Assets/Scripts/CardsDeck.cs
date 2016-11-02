@@ -7,6 +7,9 @@ public class CardsDeck : MonoBehaviour {
 	
 	private static CardsDeck m_Instance;
 
+	[SerializeField]
+	private GameObject m_CardPrefab;
+
 	public static Card[] CardsInDeck { get { return GetCards(); } }
 
 	private static Card[] GetCards() {
@@ -23,12 +26,11 @@ public class CardsDeck : MonoBehaviour {
 	private void CreateCards() {
 		foreach (Card.CardType type in Enum.GetValues(typeof(Card.CardType))) {
 			foreach (Card.CardValue value in Enum.GetValues(typeof(Card.CardValue))) {
-				var newCardObject = new GameObject();
+				var newCardObject = Instantiate(m_CardPrefab, this.transform) as GameObject;
 				Card newCard = newCardObject.AddComponent<Card>();
 				newCard.Type = type;
 				newCard.Value = value;
 				newCardObject.name = newCard.ToString();
-				newCardObject.transform.parent = this.transform;
 			}
 		}
 	}

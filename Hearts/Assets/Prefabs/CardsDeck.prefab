@@ -51,3 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01dd4153aba91f74b88ace0b71a2c244, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CardPrefab: {fileID: 1000012262051214, guid: e8aece491c702b74c98d61a62dc40900,
+    type: 2}

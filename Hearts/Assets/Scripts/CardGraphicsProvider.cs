@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 
 public static class CardGraphicsProvider {
+
 	private const string BACK_SPRITE_NAME = "Back";
+	private const string SPRITES_IMAGE_NAME = "CardSprites";
 
 	private static Dictionary<string, Sprite> Sprites;
 
@@ -35,7 +37,7 @@ public static class CardGraphicsProvider {
 			return;
 		}
 
-		Sprite[] spritesArray = Resources.LoadAll<Sprite>(""); // TODO specify path or file
+		Sprite[] spritesArray = Resources.LoadAll<Sprite>(SPRITES_IMAGE_NAME);
 		Sprites = new Dictionary<string, Sprite>();
 
 		foreach (Sprite sprite in spritesArray) {

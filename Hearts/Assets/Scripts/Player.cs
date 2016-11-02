@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
+	public bool IsHumanPlayer = false;
+
 	[SerializeField]
 	private Hand m_Hand;
 
@@ -40,6 +42,8 @@ public class Player : MonoBehaviour {
 
 	public void AcceptCardFromDealer(Card card) {
 		m_Hand.Add(card);
+		
+		card.Shown = IsHumanPlayer;
 	}
 
 	private void PlayFirstCardIfPossible() {

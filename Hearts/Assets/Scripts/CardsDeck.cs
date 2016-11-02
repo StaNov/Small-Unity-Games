@@ -27,7 +27,7 @@ public class CardsDeck : MonoBehaviour {
 		foreach (Card.CardType type in Enum.GetValues(typeof(Card.CardType))) {
 			foreach (Card.CardValue value in Enum.GetValues(typeof(Card.CardValue))) {
 				var newCardObject = Instantiate(m_CardPrefab, this.transform) as GameObject;
-				Card newCard = newCardObject.AddComponent<Card>();
+				Card newCard = newCardObject.GetComponent<Card>();
 				newCard.Type = type;
 				newCard.Value = value;
 				newCardObject.name = newCard.ToString();

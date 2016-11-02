@@ -168,6 +168,15 @@ Prefab:
       propertyPath: m_GameBoard
       value: 
       objectReference: {fileID: 2009520760}
+    - target: {fileID: 4000010962392072, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011166575608, guid: fe3d8b6587fc15242af0b713cb031fae,
+        type: 2}
+      propertyPath: IsHumanPlayer
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
   m_IsPrefabParent: 0
@@ -224,6 +233,10 @@ Prefab:
       propertyPath: m_GameBoard
       value: 
       objectReference: {fileID: 2009520760}
+    - target: {fileID: 4000010962392072, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
   m_IsPrefabParent: 0
@@ -339,6 +352,10 @@ Prefab:
       propertyPath: m_GameBoard
       value: 
       objectReference: {fileID: 2009520760}
+    - target: {fileID: 4000010962392072, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
   m_IsPrefabParent: 0
@@ -367,6 +384,10 @@ Prefab:
       propertyPath: m_GameBoard
       value: 
       objectReference: {fileID: 2009520760}
+    - target: {fileID: 4000010962392072, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe3d8b6587fc15242af0b713cb031fae, type: 2}
   m_IsPrefabParent: 0

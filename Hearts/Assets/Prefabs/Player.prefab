@@ -23,7 +23,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -92,4 +92,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e47ddb28aa3dad4599c77f1eae0fe7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsHumanPlayer: 0
   m_Hand: {fileID: 114000011141246668}

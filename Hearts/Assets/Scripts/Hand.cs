@@ -26,4 +26,10 @@ public class Hand : MonoBehaviour {
 
 		return null;
 	}
+
+	public void SetClickingOnCardsEnabled(bool enabled) {
+		foreach (var acceptor in GetComponentsInChildren<CardClickAcceptor>()) {
+			acceptor.ClickingEnabled = enabled;
+		}
+	}
 }

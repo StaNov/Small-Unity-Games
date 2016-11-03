@@ -36,7 +36,7 @@ public class GameBoard : MonoBehaviour {
 
 		card.Shown = true;
 		card.transform.parent = m_Instance.m_PlayedCardsSlots[playerIndex].transform;
-		m_Instance.m_CurrentPlayerIndex = playerIndex + 1;
+		m_Instance.m_CurrentPlayerIndex = (playerIndex + 1) % 4; // TODO magic constant
 		m_Instance.m_State = GameBoardState.WaitingForNextPlayerToPlay;
 	}
 

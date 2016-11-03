@@ -189,7 +189,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012707206334, guid: 51578a3316198124fae775cbac2b1633, type: 2}
       propertyPath: m_Name
-      value: PlayerAI (2)
+      value: Player 3
       objectReference: {fileID: 0}
     - target: {fileID: 4000013486827886, guid: 51578a3316198124fae775cbac2b1633, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -244,7 +244,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012707206334, guid: 51578a3316198124fae775cbac2b1633, type: 2}
       propertyPath: m_Name
-      value: PlayerAI (1)
+      value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 4000013486827886, guid: 51578a3316198124fae775cbac2b1633, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -296,6 +296,10 @@ Prefab:
     - target: {fileID: 4000011419689124, guid: 7ed845d61a2d5094383ee4e9192427c3, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011830130580, guid: 7ed845d61a2d5094383ee4e9192427c3, type: 2}
+      propertyPath: m_Name
+      value: Player 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7ed845d61a2d5094383ee4e9192427c3, type: 2}
@@ -458,6 +462,10 @@ Prefab:
     - target: {fileID: 4000013486827886, guid: 51578a3316198124fae775cbac2b1633, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012707206334, guid: 51578a3316198124fae775cbac2b1633, type: 2}
+      propertyPath: m_Name
+      value: Player 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 51578a3316198124fae775cbac2b1633, type: 2}

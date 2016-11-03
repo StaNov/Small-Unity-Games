@@ -14,15 +14,6 @@ public class Player : MonoBehaviour {
 		PlayerIndex = transform.GetSiblingIndex();
 	}
 
-	void Update() {
-		switch (GameBoard.State) {
-			// TODO move to AI
-			case GameBoard.GameBoardState.WaitingForFirstCard:
-				PlayFirstCardIfPossible();
-				break;
-		}
-	}
-
 	public void DealCards() {
 		Card[] cardsToDeal = CardsDeck.CardsInDeck;
 
@@ -44,13 +35,5 @@ public class Player : MonoBehaviour {
 		m_Hand.Add(card);
 		
 		card.Shown = IsHumanPlayer;
-	}
-
-	private void PlayFirstCardIfPossible() {
-		Card diamondQueen = m_Hand.GetDiamondQueenIfInHand();
-
-		if (diamondQueen != null) {
-			GameBoard.AcceptPlayedCard(diamondQueen, PlayerIndex);
-		}
 	}
 }

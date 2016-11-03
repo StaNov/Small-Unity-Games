@@ -13,8 +13,8 @@ public class Card : MonoBehaviour {
 	private bool m_TypeSet = false;
 	private bool m_ValueSet = false;
 	private bool m_Shown = false;
-	private Sprite m_CardFront; // TODO set sprite
-	private Sprite m_CardBack; // TODO set sprite
+	private Sprite m_CardFront;
+	private Sprite m_CardBack;
 
 	public override string ToString() {
 		if (!m_TypeSet || !m_ValueSet) {

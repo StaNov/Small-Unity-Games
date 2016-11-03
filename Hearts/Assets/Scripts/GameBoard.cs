@@ -10,9 +10,9 @@ public class GameBoard : MonoBehaviour {
 
 	private GameBoardState m_State;
 	private int m_CurrentPlayerIndex;
-
+	
 	[SerializeField]
-	private GameObject m_PlayedCards;
+	private GameObject[] m_PlayedCardsSlots;
 
 	
 	void Awake () {
@@ -32,7 +32,8 @@ public class GameBoard : MonoBehaviour {
 			Debug.LogError("INVALID MOVE!");
 		}
 
-		card.transform.parent = m_Instance.m_PlayedCards.transform;
+		card.Shown = true;
+		card.transform.parent = m_Instance.m_PlayedCardsSlots[playerIndex].transform;
 		m_Instance.m_CurrentPlayerIndex = playerIndex + 1;
 		m_Instance.m_State = GameBoardState.WaitingForNextPlayerToPlay;
 	}

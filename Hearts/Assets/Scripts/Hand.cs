@@ -12,9 +12,6 @@ public class Hand : MonoBehaviour {
 		foreach (Transform slot in m_CardSlots) {
 			if (slot.childCount == 0) {
 				card.transform.parent = slot;
-				// TODO animation
-				card.transform.localPosition = Vector3.zero;
-				card.transform.localRotation = Quaternion.identity;
 				return;
 			}
 		}

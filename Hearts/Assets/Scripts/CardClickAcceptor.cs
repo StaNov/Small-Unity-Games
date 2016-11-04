@@ -1,16 +1,20 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class CardClickAcceptor : MonoBehaviour {
 
-	public bool ClickingEnabled = false;
+	public Action<Card> OnCardClick = null;
+
+	[SerializeField]
+	private Card m_Card;
 	
 	void OnMouseDown () {
-		if (!ClickingEnabled) {
+		if (OnCardClick == null) {
 			return;
 		}
 
-		GetComponentInParent<HumanPlayer>().PlayClickedCard(GetComponent<Card>()); // TODO how to design better?
+		OnCardClick(m_Card);
 	}
 	
 }

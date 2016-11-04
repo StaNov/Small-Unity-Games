@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class GameBoard : MonoBehaviour {
 
+	private const int NUMBER_OF_PLAYERS = 4;
+
 	private static GameBoard m_Instance;
 
 	public static GameBoardState State { get { return m_Instance.m_State; } }
@@ -36,7 +38,7 @@ public class GameBoard : MonoBehaviour {
 
 		card.Shown = true;
 		card.transform.parent = m_Instance.m_PlayedCardsSlots[playerIndex].transform;
-		m_Instance.m_CurrentPlayerIndex = (playerIndex + 1) % 4; // TODO magic constant
+		m_Instance.m_CurrentPlayerIndex = (playerIndex + 1) % NUMBER_OF_PLAYERS;
 		m_Instance.m_State = GameBoardState.WaitingForNextPlayerToPlay;
 	}
 

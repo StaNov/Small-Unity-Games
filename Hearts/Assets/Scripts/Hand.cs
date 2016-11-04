@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 public class Hand : MonoBehaviour {
 
@@ -27,9 +28,17 @@ public class Hand : MonoBehaviour {
 		return null;
 	}
 
-	public void SetClickingOnCardsEnabled(bool enabled) {
+	public void SetClickingOnCardsEnabled(Action<Card> onCardClick) {
+		SetClickingEnabled(onCardClick);
+	}
+
+	public void SetClickingOnCardsDisabled() {
+		SetClickingEnabled(null);
+	}
+
+	private void SetClickingEnabled(Action<Card> onCardClick) {
 		foreach (var acceptor in GetComponentsInChildren<CardClickAcceptor>()) {
-			acceptor.ClickingEnabled = enabled;
+			acceptor.OnCardClick = onCardClick;
 		}
 	}
 }

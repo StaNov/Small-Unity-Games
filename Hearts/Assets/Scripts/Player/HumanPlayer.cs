@@ -7,17 +7,20 @@ public class HumanPlayer : AbstractPlayer {
 		if (m_Hand.GetDiamondQueenIfInHand() == null) {
 			return;
 		}
-		
-		m_Hand.SetClickingOnCardsEnabled(true);
+
+		EnableCardsClicking();
 	}
 
 	protected override void Play(Card[] cardsAlreadyPlayed) {
-		m_Hand.SetClickingOnCardsEnabled(true);
+		EnableCardsClicking();
 	}
 
-	// TODO design better, this is spaghetti
-	public void PlayClickedCard(Card card) {
-		m_Hand.SetClickingOnCardsEnabled(false);
+	private void EnableCardsClicking() {
+		m_Hand.SetClickingOnCardsEnabled((card) => PlayClickedCard(card));
+	}
+	
+	private void PlayClickedCard(Card card) {
+		m_Hand.SetClickingOnCardsDisabled();
 		PlayCard(card);
 	}
 }

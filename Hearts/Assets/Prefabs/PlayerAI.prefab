@@ -71,6 +71,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000012425175136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000013263736070}
+  - 114: {fileID: 114000010262816612}
+  m_Layer: 0
+  m_Name: CardsTaken
+  m_TagString: Untagged
+  m_Icon: {fileID: 7980426311660281669, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1000012707206334
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +305,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4000011605363424}
   m_RootOrder: 1
+--- !u!4 &4000013263736070
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012425175136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.22, y: -0.78, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000013486827886}
+  m_RootOrder: 1
 --- !u!4 &4000013486827886
 Transform:
   m_ObjectHideFlags: 1
@@ -296,13 +325,25 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012707206334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011605363424}
+  - {fileID: 4000013263736070}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &114000010262816612
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012425175136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb07da6406b399b4a9f02b1b0173a30c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000010459181822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,3 +389,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Hand: {fileID: 114000010843242834}
+  m_TakenCards: {fileID: 114000010262816612}

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class GameBoard : MonoBehaviour {
 
 	private const int NUMBER_OF_PLAYERS = 4;
+	private const int ROUNDS = 8;
 
 	private static GameBoard m_Instance;
 
@@ -14,6 +15,7 @@ public class GameBoard : MonoBehaviour {
 
 	private GameBoardState m_State;
 	private int m_CurrentPlayerIndex;
+	private int m_RoundNumber;
 	
 	[SerializeField]
 	private GameObject[] m_PlayedCardsSlots;
@@ -27,6 +29,25 @@ public class GameBoard : MonoBehaviour {
 	public static void StartGame() {
 		m_Instance.m_CurrentPlayerIndex = -1;
 		m_Instance.m_State = GameBoardState.WaitingForFirstCard;
+		m_Instance.m_RoundNumber = 1;
+	}
+
+	void Update() {
+		switch (State) {
+			case GameBoardState.WaitingForPlayerTakingCardsFromGameBoard:
+				if (PlayedCards.Length == 0) {
+					if (m_Instance.m_RoundNumber < ROUNDS) {
+						m_Instance.m_State = GameBoardState.WaitingForNextPlayerToPlay;
+						m_Instance.m_RoundNumber++;
+					}
+					else
+					{
+						m_Instance.m_State = GameBoardState.GameStopped; // TODO calculate points, return cards to deck, deal cards, start new game
+					}
+					
+				}
+				break;
+		}
 	}
 
 	public static void AcceptPlayedCard(Card card, int playerIndex) {
@@ -39,7 +60,14 @@ public class GameBoard : MonoBehaviour {
 		card.Shown = true;
 		card.transform.parent = m_Instance.m_PlayedCardsSlots[playerIndex].transform;
 		m_Instance.m_CurrentPlayerIndex = (playerIndex + 1) % NUMBER_OF_PLAYERS;
-		m_Instance.m_State = GameBoardState.WaitingForNextPlayerToPlay;
+
+		if (PlayedCards.Length == NUMBER_OF_PLAYERS) {
+			m_Instance.m_State = GameBoardState.WaitingForPlayerTakingCardsFromGameBoard;
+			m_Instance.m_CurrentPlayerIndex = m_Instance.PlayerWhoShouldTakeCardsFromGameBoard();
+		}
+		else {
+			m_Instance.m_State = GameBoardState.WaitingForNextPlayerToPlay;
+		}
 	}
 
 	private bool IsValidMove(Card card, int playerIndex) {
@@ -58,9 +86,14 @@ public class GameBoard : MonoBehaviour {
 		return true; // TODO add other rules
 	}
 
+	private int PlayerWhoShouldTakeCardsFromGameBoard() {
+		return new System.Random().Next(0, 4); // TODO, write tests
+	}
+
 	public enum GameBoardState {
 		GameStopped,
 		WaitingForFirstCard,
-		WaitingForNextPlayerToPlay
+		WaitingForNextPlayerToPlay,
+		WaitingForPlayerTakingCardsFromGameBoard
 	}
 }

@@ -5,7 +5,10 @@ public abstract class AbstractPlayer : MonoBehaviour {
 
 	[SerializeField]
 	protected Hand m_Hand;
-		
+
+	[SerializeField]
+	protected TakenCards m_TakenCards;
+
 	void Update () {
 		switch (GameBoard.State) {
 			case GameBoard.GameBoardState.WaitingForFirstCard:
@@ -14,6 +17,11 @@ public abstract class AbstractPlayer : MonoBehaviour {
 			case GameBoard.GameBoardState.WaitingForNextPlayerToPlay:
 				if (GameBoard.CurrentPlayerIndex == m_MyIndex) {
 					Play(GameBoard.PlayedCards);
+				}
+				break;
+			case GameBoard.GameBoardState.WaitingForPlayerTakingCardsFromGameBoard:
+				if (GameBoard.CurrentPlayerIndex == m_MyIndex) {
+					TakeCardsFromGameBoard();
 				}
 				break;
 		}
@@ -25,6 +33,10 @@ public abstract class AbstractPlayer : MonoBehaviour {
 
 	protected void PlayCard(Card card) {
 		GameBoard.AcceptPlayedCard(card, m_MyIndex);
+	}
+
+	private void TakeCardsFromGameBoard() {
+		m_TakenCards.AcceptCards(GameBoard.PlayedCards);
 	}
 
 
